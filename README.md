@@ -5,3 +5,9 @@ Team Members:
   - Liam Horrobin
   - Melanie Lucas
   - Elliot Whitehouse
+  
+Possible Roles:
+  - Backend and database 
+  - Backend and game server
+  - Game graphics – look at
+  - Frontend (html, css, js)
