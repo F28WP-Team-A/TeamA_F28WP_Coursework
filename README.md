@@ -9,5 +9,5 @@ Team Members:
 Possible Roles:
   - Backend and database 
   - Backend and game server
-  - Game graphics – look at
+  - Game graphics
   - Frontend (html, css, js)
