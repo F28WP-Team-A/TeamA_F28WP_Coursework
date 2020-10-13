@@ -3,7 +3,7 @@
 Team Members:
   - Isla Gunn
   - Liam Horrobin
-  - Melanie Lucas
+  - [Melanie Lucas](https://github.com/melucas2000)
   - Elliot Whitehouse
   
 Possible Roles:
