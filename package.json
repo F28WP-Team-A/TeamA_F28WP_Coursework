@@ -1,0 +1,25 @@
+{
+    "name": "TeamA_F28WP_Coursework",
+    "version": "0.0.1",
+    "description": "Web programming education group project at Heriot-Watt University",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type":"git",
+        "url": "git+https://github.com/F28WP-Team-A/TeamA_F28WP_Coursework.git" 
+    },
+    "keywords": [
+        "MMO",
+        "f28wp",
+        "2D game"
+    ],
+    "author": {""},
+    "license": "ISC",
+    "bugs": {
+        "url":
+    },
+    "homepage": "https://github.com/F28WP-Team-A/TeamA_F28WP_Coursework#readme",
+        
+}
