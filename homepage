@@ -1,0 +1,58 @@
+html, body {
+  position: relative;
+  height: 100%
+  padding: 0;
+  margin: 0:
+  font-family: Noto Sans, sans-serif;
+}
+
+.container {
+  display: block;
+  justify-content: center;
+  max-width: 400px;
+  min-width: 250px;
+  padding: 0;
+  margin: auto;
+  position: relative;
+  top: 35%;
+}
+
+.account {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.form { 
+  background: none;
+  background-colour: black;
+  padding: 0;
+  margin: auto;
+  width: 100%;
+}
+
+#name_container {
+  background-colour: black;
+  border: 4px white solid;
+  border-radius: 28px;
+  padding: 0;
+  margin: auto;
+  text-align: centre;
+}
+
+#registration_form, #login_form {
+  display: none;
+}
+
+#heading_container {
+  background-colour: white;
+  border: 4px #ddd;
+  border-radius: 28px;
+  padding: 0;
+  margin: auto;
+  text-align: center;
+}
+
+
+ 
