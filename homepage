@@ -54,5 +54,112 @@ html, body {
   text-align: center;
 }
 
+.promptform {
+  display: felx;
+  padding: 0;
+  margin: auto;
+  margin-top: 15px;
+  width: 100%
+}
+
+input[type=text] {
+  overflow: hidden;
+  blackground-colour: white;
+  border: 4px black solid;
+  border-radius: 28px;
+  font-size: 18px;
+  font-family: Noto Sans, sans-serif;
+  padding: 0;
+  margin: auto;
+  text-align: center;
+  width: auto;
+}
+
+button, input[type=button] {
+  overflow: hidden;
+  background-colour: black;
+  border: 4px black solid:
+  border-radius: 28px;
+  font-size: 18px;
+  font-family: Noto Sans, sans-serif;
+  padding: 0;
+  margin: auto;
+  text-align: center;
+  width: auto;
+}
+  
+label {
+  float: left;
+  display: block;
+  width: 90px;
+  background-colour: white;
+  border: 4px black solid;
+  border-radius: 18px;
+  font-size: 20px;
+  padding: 0;
+  text-align: center;
+  margin-right: 8px;
+}
+
+.promptform input[type=text] {
+  display: block;
+  width: 200px;
+}
+
+.heading {
+  background-color: black;
+  color: white;
+  font-family: Noto Sans, sans-serif;
+  font-size: 30px;
+  border: 4px black solid;
+  border-radius: 28px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+#openregistration, #openlogin {
+  display: block;
+  border: 4px black solid;
+  border-radius: 10px;
+  background-colour: white;
+  font-size: 20px;
+  font-family: Noto Sans, sans-serif;
+  margin-right: 5px;
+  margin-top: 5px;
+  width: 100px;
+}
+
+#openregistration {
+  left: 0;
+}
+
+#openlogin {
+  right: 0;
+}
+
+#play
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  border: 4px black solid;
+  backgroud-colour: white;
+  font-size: 20px;
+  font-family: Noto Sans, sans-serif;
+  margin-top: 8px;
+  width: 100px;
+}
+
+.formbutton {
+  display: block;
+  float: left;
+  margin-top: 8px;
+  width: 120px;
+}
+
+
+  
+  
+  
 
  
