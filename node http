@@ -1,0 +1,118 @@
+//mouse positions taken from nodejs and db lecture
+//basic start
+
+
+let htmlcontent = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <style type="text/css">
+      body {
+        background: #87CEEB;
+        overflow: hidden;
+      }
+	  
+	  .player {
+		position:absolute;
+	    height: 20px;
+	    width: 20px;
+	    background-color: #FFFF00;
+	    border-radius: 50%;
+	    display: inline-block;
+	  }
+
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body>
+  
+  <script>
+  window.onload = function() {
+  const url = window.location.origin || "https://9wx1q.sse.codesandbox.io/";
+  let socket = io.connect(url);
+  
+  let clients = {};
+  let divs    = {};
+  
+  let div       = document.createElement('div');
+  div.id        = 'player';
+  div.className = 'player';
+  div.innerHTML = 'player';
+  document.body.appendChild( div );
+  divs['player'] = div;
+
+  function now() {
+    return new Date().getTime();
+  }
+
+  let lastEmit = now();
+
+  window.onmousemove = function(e) {
+	    // limit how often to send mouse movements
+      if (now() - lastEmit > 15) {
+			socket.emit("mousemove", {
+			  x: e.pageX,
+			  y: e.pageY
+			});
+			lastEmit = now();
+			
+			divs[ 'player' ].style.left = e.pageX + 'px';
+      divs[ 'player' ].style.top  = e.pageY + 'px';
+     }
+  };
+
+  socket.on("moving", function(data) {
+    if (!clients.hasOwnProperty(data.id)) {
+		  let div = document.createElement('div');
+		  div.id    = data.id;
+		  div.className = 'player';
+		  document.body.appendChild( div );
+		  divs[data.id] = div;
+    }
+
+    divs[data.id].style.left = data.x + "px";
+    divs[data.id].style.top  = data.y + "px";
+    divs[data.id].innerHTML = data.id;
+
+    clients[data.id] = data;
+    clients[data.id].updated = now();
+  });
+
+  socket.on("clientdisconnect", function(id) {
+    delete clients[id];
+    if (divs[id]) {
+      divs[id].parentNode.removeChild(divs[id]);
+    }
+  });
+};
+
+  </script>
+</body>
+</html>
+`;
+
+var http = require("http");
+
+var app = http.createServer(function (req, res) {
+  res.write(htmlcontent); //write a response to the client
+  res.end(); //end the response
+});
+
+const io = require("socket.io").listen(app, { log: false });
+app.listen(8080);
+
+io.sockets.on("connection", (socket) => {
+  let id = socket.id;
+
+  socket.on("mousemove", (data) => {
+    data.id = id;
+    socket.broadcast.emit("moving", data);
+  });
+
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("clientdisconnect", id);
+  });
+});
