@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play</title>
+    <link rel="stylesheet" href="login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="login.js"></script>
+  </head>
+  <body onload="instructions()" onunload="logout()"></body>
+
+  <body>
+    <main id="main-holder">
+      <h1 id="login-header">Ninja</h1>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+      <div id="login-error-msg-holder">
+        <p id="login-error-msg">
+          Invalid username
+          <span id="error-msg-second-line">and/or password</span>
+        </p>
+      </div>
+
+      <form id="login-form">
+        <input
+          type="text"
+          name="name"
+          id="username-field"
+          class="login-form-field"
+          placeholder="name"
+        />
+        <input type="submit" value="Play" id="play-form-submit" />
+        <input type="submit" value="Login" id="login-form-submit" />
+        <input type="submit" value="Register" id="register-form-submit" />
+        <h2>Use the arrow keys to move</h2>
+      </form>
+    </main>
+  </body>
+</html>
