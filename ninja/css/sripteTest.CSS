@@ -1,0 +1,24 @@
+.fadeOut {
+    opacity: 0%;
+    transition: 1s;
+}
+.fadeOutEnemy {
+    opacity: 0%;
+    transition: 1s;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+#gameSpace {
+    position: absolute;
+    margin-top: auto;
+    height: 100%;
+    width: 100%;
+}
+
+
+html, body {
+    height: 100%;
+}
