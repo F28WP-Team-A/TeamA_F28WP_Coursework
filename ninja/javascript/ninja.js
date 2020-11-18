@@ -2,15 +2,15 @@ class Ninja {
 
     constructor(bounds) {
 
-        this.runningDims = {x:181.5, y:229};
-		this.climbDims = {x:141, y:232};
-		this.glidingDims = {x:221.5, y:227};
-        this.attackDims = {x:268, y:247.5};
+        this.runningDims = {x:90.75, y:114.5};
+		this.climbDims = {x:70.5, y:116};
+		this.glidingDims = {x:110.75, y:113.5};
+        this.attackDims = {x:134, y:123.75};
 
-        this.runSlice = 363;
-		this.climbSlice = 282;
-		this.glideSlice = 443;
-		this.attackSlice = 537;
+        this.runSlice = 90.6;
+		this.climbSlice = 70.5;
+		this.glideSlice = 110.75;
+		this.attackSlice = 134;
 
 		this.runRightSlicerPos = 0;
 		this.runLeftSlicerPos = 0;
@@ -38,6 +38,7 @@ class Ninja {
         this.div.style.width = this.runningDims.x + "px";
         this.div.style.background = this.runRight;
         this.div.style.backgroundSize = "cover";
+        // this.div.style.border = "2px solid black";
         this.div.style.padding = "0pt";
         document.getElementById("gameSpace").appendChild(this.div);
         
@@ -45,7 +46,16 @@ class Ninja {
 	
 	getPos() {
 		return this.pos;
-	}
+    }
+    
+    setX(dx) {
+        this.pos.x -= dx;
+        console.log(this.pos.x);
+    }
+
+    setY(dy) {
+        this.pos.y -= dy;
+    }
 
     moveNinja(dirInput, speed, bounds, axis) {
 
@@ -81,9 +91,6 @@ class Ninja {
         // Sets the new position of the div
         this.div.style.left 	= this.pos.x + "px";
         this.div.style.top      = this.pos.y + "px";
-
-        console.log("pos x: " + this.pos.x);
-        console.log("pos y: " + this.pos.y);
         
         return this.pos;
     }
@@ -171,7 +178,7 @@ class Ninja {
             document.getElementById("ninja").style.backgroundPosition = slicerPos + "px 0px";
         }
         return slicerPos;
-	}
+    }
 
 	}
 }

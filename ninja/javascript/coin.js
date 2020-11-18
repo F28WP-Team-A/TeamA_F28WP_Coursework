@@ -11,12 +11,14 @@ class Coin {
         this.coin.style.width      = this.size.x + "px";
         this.coin.style.top        = this.position.y + "px";
         this.coin.style.left      = this.position.x + "px";
-        // Coin image downloaded free from https://webstockreview.net/pict/getfirst
         this.coin.style.background = "url(../sprites/coin-clipart-sprite-5-original.png)";
         this.coin.style.backgroundSize   = "cover";
         // this.enemy.style.border = "2px solid black"
         document.getElementById("gameSpace").appendChild(this.coin);
-        console.log("coin created");
+        this.pos = 50;
+        this.diff = 50;
+        this.animateCoin(this.pos, this.diff, num);
+
     }
 
     getX() {
@@ -39,6 +41,20 @@ class Coin {
     getW() {
         var bottom = this.position.y + 50;
         return bottom;
+    }
+
+    animateCoin(pos, diff, num) {
+        console.log("Entered animate function");
+        setInterval(function() {			
+            document.getElementById("coin"+num).style.backgroundPosition = pos + "px 0px";
+
+            if (pos < 500) {
+                pos += diff;
+            }
+            else {
+                pos = 50;
+            }
+        }, 50);
     }
 
 }

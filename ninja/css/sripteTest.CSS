@@ -18,7 +18,47 @@
     width: 100%;
 }
 
+.wall {
+    position: absolute;
+    background: url(../sprites/wall.jpg);
+}
+
+#wall1 {
+    bottom: 0%;
+    left: 50%;
+    height: 35%;
+    width: 25px;
+}
+
+#wall2 {
+    height: 25px;
+    width: 35%;
+    top: 40%;
+    right: 1%;
+}
+
+#wall3 {
+    height: 25px;
+    width: 30%;
+    top: 65%;
+    right: 50%;
+}
+
+#wall4 {
+    height: 35%;
+    width: 25px;
+    top: 0%;
+    left: 25%;
+}
+
 
 html, body {
     height: 100%;
+}
+
+body {
+    margin: 0px;
+    border: 15px solid transparent;
+    border-image: url(../sprites/wall.jpg) 30 round;
+
 }
