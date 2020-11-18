@@ -33,3 +33,25 @@ closeModalButton.addEventListener("click", (event) => {
   event.preventDefault();
   closeAll();
 });
+
+/* change instructions on screen */
+function changeInstruction() {
+  let instruction = document.getElementById("messages");
+  instruction.innerHTML = instructions[instructionIndex];
+  instructionIndex = (instructionIndex + 1) % instructions.length;
+}
+
+/* instructions */
+let instructions = [
+  "Use WASD or the arrow keys to move.",
+  "Collect coins to win.",
+  "Use the sapce bar to kill other ninjas.",
+];
+
+let instructionIndex = 0;
+
+/* loop through instructions*/
+window.onload = function () {
+  changeInstruction();
+  setInterval(changeInstruction, 2000);
+};
