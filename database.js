@@ -30,9 +30,10 @@ dbase.query(sql, function(err, result) {
     console.log("User table created.");
 });
 
-
+/*
 const app = express();
 
 app.listen('3000', () => {
     console.log('Server started port 3000');
 });
+*/
