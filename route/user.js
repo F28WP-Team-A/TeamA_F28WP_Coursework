@@ -56,3 +56,20 @@ app.post('\login', (req, res) => {
         }
     );
 });
+
+//starter code
+/*
+//highscore
+app.post('/highscore', isLoggedIn, (req, res) => {
+
+
+    var currentHighscore = user.Highscore;
+    if (currentHighscore < highscore) {
+        user.update({ highscore }, {
+            where: { username }
+        })
+    }
+})
+*/
+
+
