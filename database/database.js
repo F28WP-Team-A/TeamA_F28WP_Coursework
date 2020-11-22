@@ -11,7 +11,9 @@ const db = mysql.createConnection({
     insecureAuth: true
 });
 
+const app = express();
 let out = "";
+
 
 //Connect to database
 db.connect((err) => {
@@ -22,7 +24,6 @@ db.connect((err) => {
 });
 
 
-const app = express();
 
 //Create database
 app.get('/createdbase', (req, res) => {
