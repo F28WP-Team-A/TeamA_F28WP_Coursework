@@ -24,7 +24,7 @@ db.connect((err) => {
 });
 
 
-
+/*
 //Create database
 app.get('/createdbase', (req, res) => {
     let sql = 'CREATE DATABASE dbase';
@@ -34,6 +34,7 @@ app.get('/createdbase', (req, res) => {
         res.send('Database created.')
     });
 });
+*/
 
 //Drop table if it already exists
 db.query("drop table user;", function(err, result) {
