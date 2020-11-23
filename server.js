@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/login/login.html");
 });
 
+/* change the file path to the correspoding game play one */
 app.get("/play", (req, res) => {
   res.sendFile(__dirname + "/public/game/index.html");
 });
