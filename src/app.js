@@ -37,7 +37,11 @@ var Entity = function () {
   };
   return self;
 };
-
+// Player 'class' not currently coded as a class
+// pressingRight left up down is for movement auto set to false
+// pressingAttack is for shooting the bullets
+// but using the same code i am also going to add a aditional trigger on pressing a
+// that swings a "sword" 
 var Player = function (id) {
   var self = Entity();
   self.id = id;
@@ -52,23 +56,27 @@ var Player = function (id) {
   self.hp = 10;
   self.maxHp = 10;
   self.score = 10;
-
+// updates the html code
+  // with movement and bullet creation on mouseclick
   var super_update = self.update;
   self.update = function () {
     self.updateSpd();
     super_update();
-
+// mouseAngle has a slight issue in that it uses the middle of the canvas as the aiming area will be fixed once 
+    // i center the objects
     if (self.pressingAttack) {
       self.shootBullet(self.mouseAngle);
     }
   };
-
+// shoots bullet at the position of the player
   self.shootBullet = function (angle) {
     var b = Bullet(self.id, angle);
     b.x = self.x;
     b.y = self.y;
   };
-
+// modifies the players speed in a direction depending upon button presses
+// this also allows for gravity 
+  // by placing a + modifier on self.spdyY
   self.updateSpd = function () {
     if (self.pressingRight) self.spdX = self.maxSpd;
     else if (self.pressingLeft) self.spdX = -self.maxSpd;
@@ -81,9 +89,11 @@ var Player = function (id) {
   Player.list[id] = self;
   return self;
 };
-
+// holds a list of Player functions
 Player.list = {};
-
+// detects player connection the instantiates a player model
+// which then allows for movement and attacks
+//
 Player.onConnect = function (socket) {
   var player = Player(socket.id);
   socket.on("keyPress", function (data) {
@@ -115,7 +125,9 @@ Player.update = function () {
   }
   return pack;
 };
-
+// the Bullet enitiy has a parent to prevent from shooting its creator
+// id set to random 
+// spdX and spdY are there define the spawning area from which the bullets are shot
 var Bullet = function (parent, angle) {
   var self = Entity();
   self.id = Math.random();
@@ -123,14 +135,15 @@ var Bullet = function (parent, angle) {
   self.spdY = Math.sin((angle / 180) * Math.PI) * 10;
 
   self.parent = parent;
-
+// this removes bullets from the game
   self.timer = 0;
   self.toRemove = false;
   var super_update = self.update;
   self.update = function () {
     if (self.timer++ > 30) self.toRemove = true;
     super_update();
-
+// player collison shouldnt hard code a distance but it works for now
+    // will change when i refactor this for tommorow
     for (var i in Player.list) {
       var p = Player.list[i];
       if (self.getDistance(p) < 32 && self.parent !== p.id) {
@@ -141,8 +154,10 @@ var Bullet = function (parent, angle) {
   Bullet.list[self.id] = self;
   return self;
 };
+// holds a list of bullets
 Bullet.list = {};
-
+// Bullet.update same as Player.update
+// 
 Bullet.update = function () {
   var pack = [];
   for (var i in Bullet.list) {
@@ -157,7 +172,8 @@ Bullet.update = function () {
   }
   return pack;
 };
-
+// upon detecting a connection creates a socket_id and gives it a random number
+// random number was used in earlier testing and could probably be removed
 io.sockets.on("connection", function (socket) {
   socket.id = Math.random();
   SOCKET_LIST[socket.id] = socket;
@@ -169,7 +185,7 @@ io.sockets.on("connection", function (socket) {
     Player.onDisconnect(socket);
   });
 });
-
+// game loop that sends the Player and Bullet packages (pack)
 setInterval(function () {
   var pack = {
     player: Player.update(),
