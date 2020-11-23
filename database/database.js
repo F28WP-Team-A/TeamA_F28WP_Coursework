@@ -50,6 +50,13 @@ db.query(sql, function(err, result) {
     console.log("User table created.");
 });
 
+//Insert column email into user table
+var sql = 'ALTER TABLE user ADD COLUMN email VARCHAR(250) NOT NULL';
+db.query(sql, function(err, result) {
+    if (err) throw err;
+    console.log('User table altered.')
+});
+
 
 /*
 app.listen('3000', () => {
