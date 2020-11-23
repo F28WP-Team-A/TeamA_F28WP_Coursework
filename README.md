@@ -11,3 +11,7 @@ Possible Roles:
   - Backend and game server
   - Game graphics
   - Frontend (html, css, js)
+
+this has changed the Player folder has been depreciated for a Client folder
+as a Player folder/ file will be used later to hold the Player class come refactoring
+current progress in refactoring behind the scenes works fine but cannot connect the HTML elements to the javascript code
