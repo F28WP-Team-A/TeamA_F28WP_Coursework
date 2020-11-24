@@ -13,6 +13,7 @@
   </head>
   <body>
     <div class="stage">
+      <!-- game title incased by two lines -->
       <h1 class="title">
         <span class="text-wrapper">
           <span class="line line1"></span>
@@ -22,12 +23,14 @@
       </h1>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+      <!-- show error message is incorect login details entered -->
       <div id="login-error-msg-holder">
         <p id="login-error-msg">
           Invalid username
           <span id="error-msg-second-line">and/or password</span>
         </p>
       </div>
+      <!-- username input -->
       <form id="play-form">
         <input
           type="text"
@@ -35,13 +38,27 @@
           class="form-field"
           placeholder="username"
         />
+        <!-- buttons that open modals -->
         <a id="play-form-submit" href="/play">Play</a>
-        <button class="modal-button" id="login-modal-button">Login</button>
-        <button class="modal-button" id="reg-modal-button">Register</button>
+        <button
+          class="modal-button"
+          onclick="gamelogin()"
+          id="login-modal-button"
+        >
+          Login
+        </button>
+        <button
+          class="modal-button"
+          onclick="gameregistration()"
+          id="reg-modal-button"
+        >
+          Register
+        </button>
       </form>
       <span id="messages"></span>
     </div>
 
+    <!-- login modal -->
     <div class="modal" id="modal">
       <div class="modal-body" id="login-modal">
         <h1>Login</h1>
@@ -56,14 +73,21 @@
           name="name"
           class="login-modal-email"
           placeholder="email"
+          id="login-email"
+          values="{{email}}"
+          required
         />
         <input
           type="text"
           name="name"
           class="login-modal-password"
           placeholder="password"
+          id="login-psw"
+          values="{{password}}"
+          required
         />
       </div>
+      <!-- registration modal -->
       <div class="modal-body" id="registration-modal">
         <h1>Registration</h1>
         <input
@@ -77,17 +101,25 @@
           name="name"
           class="registration-modal-username"
           placeholder="email"
+          id="registration-email"
+          values="{{email}}"
+          required
         />
         <input
           type="text"
           name="name"
           class="registration-modal-password"
           placeholder="password"
+          id="registration-psw"
+          values="{{password}}"
+          required
         />
       </div>
+      <!-- exit button for modal -->
       <div class="close-button-container">
-        <button id="close-button">X</button>
+        <button onclick="closeForm('modal')" id="close-button">X</button>
       </div>
     </div>
   </body>
 </html>
+
