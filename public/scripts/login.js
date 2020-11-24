@@ -5,30 +5,36 @@ const regModal = document.getElementById("registration-modal");
 const closeModalButton = document.getElementById("close-button");
 const outerModal = document.getElementById("modal");
 
+/* close the modals */
 const closeAll = () => {
   loginModal.style.display = "none";
   regModal.style.display = "none";
   outerModal.style.display = "none";
 };
 
+/* open the modals */
 const openModal = (modalName) => {
   outerModal.style.display = "block";
 
+  /* when one modal is visible the other is hidden */
   const isLogin = modalName == "login";
   loginModal.style.display = isLogin ? "flex" : "none";
   regModal.style.display = isLogin ? "none " : "flex";
 };
 
+/* when login button is clicked open login modal */
 loginModalButton.addEventListener("click", (event) => {
   event.preventDefault();
   openModal("login");
 });
 
+/* when register button is clicked open register modal*/
 regModalButton.addEventListener("click", (event) => {
   event.preventDefault();
   openModal("registration");
 });
 
+/* when modal exit button is clicked close the modals */
 closeModalButton.addEventListener("click", (event) => {
   event.preventDefault();
   closeAll();
@@ -50,14 +56,16 @@ let instructions = [
 
 let instructionIndex = 0;
 
-/* loop through instructions*/
+/* loop through instructions when all content has loaded*/
 window.onload = function () {
+  /* set the first instruction */
   changeInstruction();
+  /* set the instruction change speed */
   setInterval(changeInstruction, 2000);
 };
 
-/* title */
-// every letter warapped in a span
+/* game title */
+/* every letter warapped in a span */
 var textWrapped = document.querySelector(".title .letters");
 textWrapped.innerHTML = textWrapped.textContent.replace(
   /\S/g,
@@ -91,3 +99,69 @@ anime
     easing: "easeOutExpo",
     delay: 1000,
   });
+
+/* request login from server */
+function gamelogin() {
+  let email = document.getElementById("login-email").value;
+  let password = document.getElementById("login-psw").value;
+
+  let data = {
+    email,
+    password,
+  };
+
+  /* need to insert the correct link to file */
+  fetch("/gamelogin", {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Origin": "*",
+    },
+    method: "POST",
+    body: JSON.stringify(data),
+  })
+    .then((responseJSON) => responseJSON.json())
+    .then((body) => {
+      console.log(body);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+/* request registration for game from server */
+function gameregistration() {
+  let email = document.getElementById("registration-email").value;
+  let password = document.getElementById("registration-psw").value;
+
+  let data = {
+    email,
+    password,
+  };
+
+  /* need to insert the correct link to file */
+  fetch("/gameregistration", {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Origin": "*",
+    },
+    method: "POST",
+    body: JSON.stringify(data),
+  })
+    .then((responseJSON) => responseJSON.json())
+    .then((body) => {
+      console.log(body);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+/* player provided id is hidden */
+function closeForm(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+/* player provided id is visiable */
+function openForm(id) {
+  document.getElementById(id).style.display = "block";
+}
