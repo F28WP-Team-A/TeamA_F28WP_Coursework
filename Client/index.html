@@ -1,10 +1,56 @@
-<html>
-  <canvas
-    id="ctx"
-    width="500p"
-    height="500"
-    style="border: 5px solid#000000;"
-  ></canvas>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/src/Client/Player.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Game</title>
+    <!-- change the link to the game page css -->
+    <link rel="stylesheet" href="styles/game.css" /> 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
+      rel="stylesheet"
+    />
+    <body onload="instructions()" onunload="gamelogout()" >
+
+        <script>
+            /* request logout of game from server with ajax */
+           function gamelogout() {
+      let data = {
+        email: "teja",
+        last_time_online: new Date()
+      };
+      
+      console.log("gamelogout")
+      
+      /* need to insert the correct link to file */
+      fetch("/gamelogout", {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Origin": "*"
+        },
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then( responseJSON => responseJSON.json())
+      .then( body => {
+        console.log(body)
+      })
+      .catch( error => {
+        console.error(error)
+      })
+      }
+        </script>
+    
+      <canvas
+        id="ctx"
+        width="500p"
+        height="500"
+        style="border: 5px solid#000000"
+      ></canvas>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/src/Client/Player.js"></script>
+    </html>
+  </head>
 </html>
