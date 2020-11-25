@@ -110,8 +110,8 @@ function gamelogin() {
     password,
   };
 
-  /* need to insert the correct link to file */
-  fetch("/gamelogin", {
+  /* link to authentication */
+  fetch("/auth", {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Origin": "*",
@@ -138,8 +138,8 @@ function gameregistration() {
     password,
   };
 
-  /* need to insert the correct link to file */
-  fetch("/gameregistration", {
+  /* link to authentication */
+  fetch("/auth", {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Origin": "*",
@@ -165,3 +165,4 @@ function closeForm(id) {
 function openForm(id) {
   document.getElementById(id).style.display = "block";
 }
+
