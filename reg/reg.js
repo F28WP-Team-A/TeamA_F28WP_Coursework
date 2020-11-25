@@ -23,22 +23,22 @@ app.get('/', function(req, res) {
 });
 
 app.post('/auth', function(req, res) {
-    var username = req.body.username;
-    // var email = req.body.email;
+    //var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
-    if (username && password) {
-        db.query('SELECT * FROM user WHERE username = ? AND password = ?', [username, password], function(err, result, fields) {
+    if (email && password) {
+        db.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function(err, result, fields) {
             if (result.length > 0) {
                 req.session.loggedin = true;
-                req.session.username = username;
+                req.session.email = email;
                 //response.redirect('/...')
             } else {
-                response.send('Incorrect username or password.');
+                response.send('Incorrect email or password.');
             }
             response.end();
         });
     } else {
-        response.send('Enter username and password.');
+        response.send('Enter email and password.');
         response.end();
     }
 });
