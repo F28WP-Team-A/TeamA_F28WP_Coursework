@@ -103,7 +103,7 @@ anime
 /* request login from server */
 function gamelogin() {
   let email = document.getElementById("login-email").value;
-  let password = document.getElementById("login-psw").value;
+  let password = document.getElementById("login-password").value;
 
   let data = {
     email,
@@ -131,7 +131,7 @@ function gamelogin() {
 /* request registration for game from server */
 function gameregistration() {
   let email = document.getElementById("registration-email").value;
-  let password = document.getElementById("registration-psw").value;
+  let password = document.getElementById("registration-password").value;
 
   let data = {
     email,
