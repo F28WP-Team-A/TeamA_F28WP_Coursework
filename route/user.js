@@ -1,16 +1,47 @@
 const express = require('express');
 const db = require('database.js'); //fix route
 const router = express.Router;
+const cors = require('cors');
+
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10
 
 const app = express();
 
+app.use(express.json());
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true
+}));
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(
+    session({
+        key: "userId",
+        secret: "asdfghjklF28WPlkjhgfdsa",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            //cookie expires 24 hours after it's created -- logs user out
+            expires: 60 * 60 * 24,
+        },
+    })
+);
+
+
 
 //register
 app.post('/register', (req, res) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
 
     //hashed password 
@@ -20,7 +51,7 @@ app.post('/register', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO user (username, password) VALUES (?, ?)', [username, password],
+            'INSERT INTO user (email, password) VALUES (?, ?)', [email, password],
             (err, result) => {
                 console.log(err);
             }
@@ -30,12 +61,12 @@ app.post('/register', (req, res) => {
 
 //login
 app.post('\login', (req, res) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
 
     db.query(
-        'SELECT * FROM user WHERE username = ?;',
-        username,
+        'SELECT * FROM user WHERE email = ?;',
+        email,
         (err, result) => {
             if (err) {
                 res.send({ err: err });
@@ -45,9 +76,11 @@ app.post('\login', (req, res) => {
                 //first element of result
                 bcrypt.compare(password, result[0].password, (error, response) => {
                     if (response) {
+                        req.session.user = result;
+                        //console.log(req.session.user);
                         res.send(result)
                     } else {
-                        res.send({ message: 'Incorrect username and password.' });
+                        res.send({ message: 'Incorrect email and password.' });
                     }
                 });
             } else {
