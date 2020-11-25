@@ -6,8 +6,18 @@ Team Members:
   - [Melanie Lucas](https://github.com/melucas2000)
   - [Elliot Whitehouse](https://github.com/ElliotW65)
   
-Possible Roles:
+Roles:
   - Backend and database 
   - Backend and game server
+  - Frontend (html, css, js) and database
   - Game graphics
-  - Frontend (html, css, js)
+  
+  # Implementation
+  - Socket.io is used for communication between the client and the server.
+  - MySQL is used for our backend database storage of user details.
+  
+  # Game Set Up and Deployment 
+  - Our game requires Node.js to be installed.
+  - Currently our game is run on localhost:3000 and our database is run on localhost.
+  
+  
