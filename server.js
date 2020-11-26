@@ -6,6 +6,7 @@ var path = require("path");
 var app = express();
 var http = require("http").createServer(app);
 var bcrypt = require("bcrypt");
+var cookieSession = reequire('cookie-session');
 const saltRounds = 10;
 
 var io = require("socket.io")(http);
