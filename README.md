@@ -15,6 +15,8 @@ Roles:
   # Implementation
   - Socket.io is used for communication between the client and the server.
   - MySQL is used for our backend database storage of user details.
+  -Socket.io Initialy sends a package containing all initilising variables
+  -Socket.io afterwards sends a update package with position hp and other variables every 40m/s
   
   # Game Set Up and Deployment 
   - Our game requires Node.js to be installed.
