@@ -16,17 +16,31 @@ var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "nodelogin",
+  database: "dblogin",
 });
 
+/* database sql create command */
+/*CREATE DATABASE IF NOT EXISTS `dblogin` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ USE `dblogin`;
 
-app.use(
-  session({
-    secret: "sec",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
+ CREATE TABLE IF NOT EXISTS `accounts` (
+   `id` int(11) NOT NULL,
+   `username` varchar(50) NOT NULL,
+   `password` varchar(255) NOT NULL,
+   `email` varchar(100) NOT NULL
+ ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+ INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES (1, 'test', 'test', 'test@test.com');
+
+ ALTER TABLE `accounts` ADD PRIMARY KEY (`id`);
+ ALTER TABLE `accounts` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ app.use(
+   session({
+     secret: "sec",
+     resave: true,
+     saveUninitialized: true,
+   })
+ ); */
 
 /* Cookie - expires after 1 hour
 app.use(cookieSession({
