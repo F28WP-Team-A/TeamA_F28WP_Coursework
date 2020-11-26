@@ -22,6 +22,8 @@ Roles:
   - Our game requires Node.js to be installed.
   - Currently our game is run on localhost:3000 and our database is run on localhost.
   - Game and login seperate we where unable to connect them.
+  - in order to set up the game you need the Client and Server folders and use the app.js
+  - in order to set up the login page and database you need the Server.js and public folders 
   
   # How to play
   - use w,a,s,d, to move 
