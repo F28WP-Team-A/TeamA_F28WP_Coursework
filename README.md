@@ -28,7 +28,7 @@ Roles:
   - play game here https://8mtm3.sse.codesandbox.io/
   
   # Sprites
-  -The spaceship is from here // ship image from https://opengameart.org/content/space-ship-construction-kit
+  -The spaceship is from here ship image from https://opengameart.org/content/space-ship-construction-kit
   -The background is from https://opengameart.org/content/2d-space-ships-pack-war-antuz-race
   -the missiles are from https://opengameart.org/content/2d-space-ships-pack-war-antuz-race
   -And the unused shield is from https://opengameart.org/content/2d-space-ships-pack-war-antuz-race
