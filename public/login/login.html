@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&ampdisplay=swap"
+      rel="stylesheet"
+    />
+    <script defer src="scripts/login.js"></script>
+  </head>
+  <body>
+    <div class="stage">
+      <!-- game title incased by two lines -->
+      <h1 class="title">
+        <span class="text-wrapper">
+          <span class="line line1"></span>
+          <span class="letters">The Pain Game</span>
+          <span class="line line2"></span>
+        </span>
+      </h1>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+      <!-- username input -->
+      <form id="play-form">
+        <input
+          type="text"
+          name="name"
+          class="form-field"
+          placeholder="username"
+        />
+        <!-- buttons that open modals -->
+        <a id="play-form-submit" type="submit" value="PLAY" href="/play"
+          >Play</a
+        >
+        <button class="modal-button" id="login-modal-button">Login</button>
+        <button class="modal-button" id="reg-modal-button">Register</button>
+      </form>
+      <span id="messages"></span>
+    </div>
+
+    <!-- login modal -->
+    <div class="modal" id="modal">
+      <div class="modal-body" id="login-modal">
+        <h1>Login</h1>
+        <form action="auth" method="POST"></form>
+        <input
+          type="text"
+          name="name"
+          class="login-modal-username"
+          placeholder="username"
+        />
+        <input
+          type="text"
+          name="name"
+          class="login-modal-email"
+          placeholder="email"
+          id="login-email"
+          values="{{email}}"
+          required
+        />
+        <input
+          type="text"
+          name="name"
+          class="login-modal-password"
+          placeholder="password"
+          id="login-password"
+          values="{{password}}"
+          required
+        />
+      </div>
+      <!-- registration modal -->
+      <div class="modal-body" id="registration-modal">
+        <h1>Registration</h1>
+        <form onsubmit="return false" action="auth" method="POST"></form>
+        <input
+          type="text"
+          name="name"
+          class="registration-modal-username"
+          placeholder="username"
+        />
+        <input
+          type="text"
+          name="name"
+          class="registration-modal-username"
+          placeholder="email"
+          id="registration-email"
+          values="{{email}}"
+          required
+        />
+        <input
+          type="text"
+          name="name"
+          class="registration-modal-password"
+          placeholder="password"
+          id="registration-password"
+          values="{{password}}"
+          required
+        />
+      </div>
+      <!-- exit and submit buttons for modal -->
+      <div class="close-button-container">
+        <button onclick="closeForm('modal')" id="close-button">X</button>
+        <button value="Submit" onclick="gamelogin()">&#10003;</button>
+      </div>
+    </div>
+  </body>
+</html>
