@@ -5,6 +5,8 @@ var mysql = require("mysql");
 var path = require("path");
 var app = express();
 var http = require("http").createServer(app);
+var bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 var io = require("socket.io")(http);
 
@@ -16,6 +18,7 @@ var connection = mysql.createConnection({
   database: "nodelogin",
 });
 
+
 app.use(
   session({
     secret: "sec",
@@ -23,6 +26,14 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+/* Cookie - expires after 1 hour
+app.use(cookieSession({
+    name: 'session',
+    secret: 'saddflF28WPakdks',
+    maxAge:  3600 * 1000 //
+}));
+*/
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -39,12 +50,31 @@ app.get("/", (req, res) => {
 app.post("/auth", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+  
+ /* for hashing a password
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    if (err) {
+        throw err;
+    } else {
+        bcrypt.hash(password, salt, function(err, hash) {
+            if (err) {
+                throw err;
+            } else {
+                console.log(hash)
+            }
+        })
+    }
+});
+*/
 
   if (email && password) {
     connection.connect();
+    
+    //bcrypt.hash(password, salt (err, hash) {
 
     /* query database */
     connection.query(
+      //security
       "SELECT * FROM accounts WHERE email = ? AND password = ?",
       [email, password],
       function (error, results, fields) {
@@ -58,6 +88,8 @@ app.post("/auth", (req, res) => {
         }
         res.end();
       }
+      };
+      //})
     );
 
     connection.end();
