@@ -37,12 +37,12 @@ Player = function (id) {
   };
   // movement could be used to simulate gravity
   self.updateSpd = function () {
-    if (self.pressingRight) self.spdX = self.maxSpd;
-    else if (self.pressingLeft) self.spdX = -self.maxSpd;
+    if (self.pressingRight && self.x <1000) self.spdX = self.maxSpd;
+    else if (self.pressingLeft && self.x>0) self.spdX = -self.maxSpd;
     else self.spdX = 0;
 
-    if (self.pressingUp) self.spdY = -self.maxSpd;
-    else if (self.pressingDown) self.spdY = self.maxSpd;
+    if (self.pressingUp && self.y >0) self.spdY = -self.maxSpd;
+    else if (self.pressingDown && self.y<1000) self.spdY = self.maxSpd;
     else self.spdY = 0;
   };
   // gets the initial package for the game
