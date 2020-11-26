@@ -1,25 +1,12 @@
 {
-    "name": "TeamA_F28WP_Coursework",
+    "name": "socket-chat-example",
     "version": "0.0.1",
-    "description": "Web programming education group project at Heriot-Watt University",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type":"git",
-        "url": "git+https://github.com/F28WP-Team-A/TeamA_F28WP_Coursework.git" 
-    },
-    "keywords": [
-        "MMO",
-        "f28wp",
-        "2D game"
-    ],
-    "author": {""},
-    "license": "GPL 3.0",
-    "bugs": {
-        "url":
-    },
-    "homepage": "https://github.com/F28WP-Team-A/TeamA_F28WP_Coursework#readme",
-   
+    "description": "my first socket.io app",
+    "dependencies": {
+        "express": "^4.15.2",
+        "express-session": "^1.17.1",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.6",
+        "socket.io": "^3.0.1"
+    }
 }
